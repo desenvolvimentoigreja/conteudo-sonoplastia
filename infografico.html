@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formação em Áudio para Igreja</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --gold: #c9a84c;
+        --gold-light: #e8c97a;
+        --gold-pale: #f5e8c0;
+        --dark: #0e0e0e;
+        --dark-2: #161616;
+        --dark-3: #1f1f1f;
+        --dark-4: #2a2a2a;
+        --white: #f8f4ee;
+        --muted: #888;
+        --espiritual: #8b6fbe;
+        --espiritual-bg: #1a1526;
+        --teorica: #4a9ebf;
+        --teorica-bg: #0f1e26;
+        --pratica: #4caf7d;
+        --pratica-bg: #0f1f17;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--dark);
+        color: var(--white);
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* ─── HEADER ─── */
+      .hero {
+        background: var(--dark-2);
+        border-bottom: 1px solid #2a2a2a;
+        padding: 64px 40px 56px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          rgba(201, 168, 76, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-eyebrow {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 5vw, 58px);
+        font-weight: 900;
+        line-height: 1.1;
+        color: var(--white);
+        margin-bottom: 12px;
+      }
+      .hero h1 span {
+        color: var(--gold);
+      }
+      .hero-sub {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 600px;
+        margin: 0 auto 40px;
+        font-style: italic;
+      }
+      .hero-desc {
+        max-width: 640px;
+        margin: 0 auto;
+        font-size: 15px;
+        color: #aaa;
+        line-height: 1.75;
+      }
+      .gold-rule {
+        width: 60px;
+        height: 2px;
+        background: var(--gold);
+        margin: 28px auto;
+      }
+
+      /* ─── SECTION WRAPPER ─── */
+      .section {
+        padding: 60px 40px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .section-desc {
+        color: #999;
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+
+      /* ─── OVERVIEW CARDS ─── */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2px;
+        background: #222;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .overview-card {
+        padding: 36px 32px;
+        position: relative;
+        transition: background 0.2s;
+      }
+      .overview-card.esp {
+        background: var(--espiritual-bg);
+      }
+      .overview-card.teo {
+        background: var(--teorica-bg);
+      }
+      .overview-card.pra {
+        background: var(--pratica-bg);
+      }
+      .overview-card:hover {
+        filter: brightness(1.12);
+      }
+      .card-icon {
+        font-size: 28px;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .card-track-label {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .esp .card-track-label {
+        color: var(--espiritual);
+      }
+      .teo .card-track-label {
+        color: var(--teorica);
+      }
+      .pra .card-track-label {
+        color: var(--pratica);
+      }
+      .card-title {
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--white);
+      }
+      .card-body {
+        font-size: 13.5px;
+        color: #aaa;
+        line-height: 1.65;
+      }
+      .card-modules-count {
+        margin-top: 20px;
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        display: inline-block;
+      }
+      .esp .card-modules-count {
+        background: rgba(139, 111, 190, 0.15);
+        color: var(--espiritual);
+      }
+      .teo .card-modules-count {
+        background: rgba(74, 158, 191, 0.15);
+        color: var(--teorica);
+      }
+      .pra .card-modules-count {
+        background: rgba(76, 175, 125, 0.15);
+        color: var(--pratica);
+      }
+
+      /* ─── DIVIDER ─── */
+      .divider {
+        border: none;
+        border-top: 1px solid #222;
+        margin: 0;
+      }
+
+      /* ─── TRILHA SECTION ─── */
+      .trilha-section {
+        padding: 64px 40px;
+      }
+      .trilha-section:nth-of-type(even) {
+        background: var(--dark-2);
+      }
+      .trilha-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .trilha-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 48px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid #2a2a2a;
+      }
+      .trilha-icon-wrap {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        flex-shrink: 0;
+      }
+      .esp-bg {
+        background: rgba(139, 111, 190, 0.15);
+      }
+      .teo-bg {
+        background: rgba(74, 158, 191, 0.15);
+      }
+      .pra-bg {
+        background: rgba(76, 175, 125, 0.15);
+      }
+      .trilha-header-text {
+        flex: 1;
+      }
+      .trilha-track-badge {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .esp .trilha-track-badge,
+      .esp-color {
+        color: var(--espiritual);
+      }
+      .teo .trilha-track-badge,
+      .teo-color {
+        color: var(--teorica);
+      }
+      .pra .trilha-track-badge,
+      .pra-color {
+        color: var(--pratica);
+      }
+      .trilha-h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .trilha-desc {
+        color: #999;
+        font-size: 14px;
+        max-width: 640px;
+        line-height: 1.7;
+      }
+
+      /* ─── MÓDULOS GRID ─── */
+      .modulos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 12px;
+      }
+      .modulo-card {
+        background: var(--dark-3);
+        border-radius: 12px;
+        padding: 22px 22px 22px 22px;
+        border: 1px solid #2a2a2a;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .modulo-card:hover {
+        transform: translateY(-2px);
+      }
+      .esp .modulo-card:hover {
+        border-color: rgba(139, 111, 190, 0.5);
+      }
+      .teo .modulo-card:hover {
+        border-color: rgba(74, 158, 191, 0.5);
+      }
+      .pra .modulo-card:hover {
+        border-color: rgba(76, 175, 125, 0.5);
+      }
+      .modulo-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        border-radius: 3px 0 0 3px;
+      }
+      .esp .modulo-card::before {
+        background: var(--espiritual);
+      }
+      .teo .modulo-card::before {
+        background: var(--teorica);
+      }
+      .pra .modulo-card::before {
+        background: var(--pratica);
+      }
+      .modulo-id {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .esp .modulo-id {
+        color: var(--espiritual);
+      }
+      .teo .modulo-id {
+        color: var(--teorica);
+      }
+      .pra .modulo-id {
+        color: var(--pratica);
+      }
+      .modulo-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 6px;
+        line-height: 1.3;
+      }
+      .modulo-body {
+        font-size: 12.5px;
+        color: #888;
+        line-height: 1.55;
+      }
+
+      /* ─── QUOTE BLOCK ─── */
+      .quote-block {
+        background: linear-gradient(
+          135deg,
+          rgba(201, 168, 76, 0.06) 0%,
+          rgba(201, 168, 76, 0.02) 100%
+        );
+        border: 1px solid rgba(201, 168, 76, 0.2);
+        border-radius: 12px;
+        padding: 28px 32px;
+        margin: 40px 0;
+        position: relative;
+      }
+      .quote-block::before {
+        content: '"';
+        position: absolute;
+        top: -8px;
+        left: 20px;
+        font-family: "Playfair Display", serif;
+        font-size: 72px;
+        color: var(--gold);
+        opacity: 0.25;
+        line-height: 1;
+      }
+      .quote-text {
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        font-style: italic;
+        color: var(--gold-light);
+        line-height: 1.7;
+        margin-bottom: 10px;
+      }
+      .quote-ref {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+      }
+
+      /* ─── HIGHLIGHT BOX ─── */
+      .highlight-box {
+        background: var(--dark-3);
+        border-radius: 12px;
+        border: 1px solid #333;
+        padding: 20px 24px;
+        margin: 28px 0;
+        font-size: 14px;
+        color: #ccc;
+        font-style: italic;
+        line-height: 1.7;
+        position: relative;
+      }
+
+      /* ─── SUBGROUPS ─── */
+      .subgroup-title {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin: 36px 0 16px;
+        padding: 0 0 10px;
+        border-bottom: 1px solid #2a2a2a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .subgroup-title span {
+        color: #555;
+      }
+      .subgroup-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .esp .subgroup-dot {
+        background: var(--espiritual);
+      }
+      .teo .subgroup-dot {
+        background: var(--teorica);
+      }
+      .pra .subgroup-dot {
+        background: var(--pratica);
+      }
+
+      /* ─── FOOTER ─── */
+      .footer {
+        background: var(--dark-2);
+        border-top: 1px solid #222;
+        padding: 48px 40px;
+        text-align: center;
+      }
+      .footer-quote {
+        max-width: 700px;
+        margin: 0 auto;
+        font-family: "Playfair Display", serif;
+        font-size: 18px;
+        font-style: italic;
+        color: var(--gold-light);
+        line-height: 1.75;
+        margin-bottom: 24px;
+      }
+      .footer-note {
+        font-size: 12px;
+        color: #555;
+        font-family: "DM Mono", monospace;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+    <div class="hero">
+      <div class="hero-eyebrow">Material de Referência Rápida</div>
+      <h1>Formação em <span>Áudio</span><br />para Igreja</h1>
+      <div class="hero-sub">
+        Da Base Técnica à Aplicação Prática, com Fundamento Espiritual
+      </div>
+      <div class="gold-rule"></div>
+      <div class="hero-desc">
+        Formação estruturada, progressiva e enraizada na fé. O objetivo não é
+        apenas ensinar a operar equipamentos — é desenvolver operadores que
+        compreendam a técnica com segurança, o ministério com maturidade e
+        sirvam com excelência. Excelência não é vaidade técnica. É adoração na
+        prática.
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ OVERVIEW DAS 3 TRILHAS ═══════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Visão Geral</div>
+      <div class="section-title">As Três Trilhas Complementares</div>
+      <div class="section-desc">
+        Cada trilha pressupõe e alimenta as outras. Juntas, formam o operador
+        completo.
+      </div>
+
+      <div class="overview-grid">
+        <div class="overview-card esp">
+          <span class="card-icon">✦</span>
+          <div class="card-track-label">Trilha 1</div>
+          <div class="card-title">Espiritual<br />Fundamento e Chamado</div>
+          <div class="card-body">
+            O porquê antes do como. Identidade ministerial, base bíblica e
+            propósito que sustenta toda a técnica. Somos ministros antes de
+            sermos técnicos.
+          </div>
+          <div class="card-modules-count">6 módulos · M01–M06</div>
+        </div>
+
+        <div class="overview-card teo">
+          <span class="card-icon">◈</span>
+          <div class="card-track-label">Trilha 2</div>
+          <div class="card-title">Teórica<br />Fundamentos do Áudio</div>
+          <div class="card-body">
+            Base conceitual: física do som, fluxo de sinal, processamento e
+            acústica. Entender antes de operar — assim como um desenvolvedor
+            precisa entender lógica antes de escrever código.
+          </div>
+          <div class="card-modules-count">14 módulos · T01–T14</div>
+        </div>
+
+        <div class="overview-card pra">
+          <span class="card-icon">▶</span>
+          <div class="card-track-label">Trilha 3</div>
+          <div class="card-title">Prática<br />Aplicação na X32 ao Vivo</div>
+          <div class="card-body">
+            Operação real: interface da X32, monitor, IEM, soundcheck, workflow
+            e especialização avançada. Segurança operacional em situações reais
+            de culto.
+          </div>
+          <div class="card-modules-count">13 módulos · P01–P13</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- ═══════════════════════════ TRILHA ESPIRITUAL ═══════════════════════════ -->
+    <div class="trilha-section esp">
+      <div class="trilha-inner">
+        <div class="trilha-header">
+          <div class="trilha-icon-wrap esp-bg">✦</div>
+          <div class="trilha-header-text">
+            <div class="trilha-track-badge esp-color">Trilha 1 · M01–M06</div>
+            <div class="trilha-h2">Espiritual — Fundamento e Chamado</div>
+            <div class="trilha-desc">
+              Embora o termo sonoplastia seja moderno, a essência tem raízes
+              profundas nos tempos bíblicos. Antes de qualquer técnica, o
+              operador precisa entender quem ele é, por que está ali e para quem
+              está servindo.
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <div class="quote-text">
+            Davi, juntamente com os chefes do exército, separou para o
+            ministério alguns dos filhos de Asafe, Hemã e Jedutum para
+            profetizar com harpas, alaúdes e címbalos.
+          </div>
+          <div class="quote-ref">— 1 Crônicas 25:1</div>
+        </div>
+
+        <div class="highlight-box">
+          Não eram apenas músicos — foram
+          <strong style="color: var(--white)"
+            >separados para o ministério</strong
+          >. Hoje não seguramos harpas, mas a mesa de som, o iPad e toda a
+          estrutura de áudio da igreja. A essência é a mesma: som é ferramenta,
+          ministério é chamado.
+        </div>
+
+        <!-- Grupo de Módulos -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot esp"></div>
+          Identidade e Propósito
+        </div>
+        <div class="modulos-grid esp">
+          <div class="modulo-card">
+            <div class="modulo-id">M01</div>
+            <div class="modulo-title">Por que somos sonoplastia?</div>
+            <div class="modulo-body">
+              1 Crônicas 25:1 — Separados para o ministério, não apenas para a
+              técnica. Som é ferramenta; ministério é chamado.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">M02</div>
+            <div class="modulo-title">Para que somos sonoplastia?</div>
+            <div class="modulo-body">
+              Colossenses 3:23 — Fazemos com excelência e amor para atender o
+              chamado de Deus. Somos necessários e essenciais na entrega de
+              outros ministérios.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">M03</div>
+            <div class="modulo-title">Para onde vamos como sonoplastia?</div>
+            <div class="modulo-body">
+              2 Timóteo 2:2 — Transmitir a homens fiéis e idôneos. Ministério
+              que não morre. Expandir, formar novos operadores, preparar
+              sucessores.
+            </div>
+          </div>
+        </div>
+
+        <div class="subgroup-title">
+          <div class="subgroup-dot esp"></div>
+          Base Bíblica e Histórica
+        </div>
+        <div class="modulos-grid esp">
+          <div class="modulo-card">
+            <div class="modulo-id">M04</div>
+            <div class="modulo-title">Sonoplastia na Bíblia</div>
+            <div class="modulo-body">
+              Davi, Asafe, Hemã e Jedutum. 288 músicos. Organização, treinamento
+              contínuo e dedicação exclusiva ao serviço do som — dia e noite no
+              templo.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">M05</div>
+            <div class="modulo-title">Instrumentos, Som e Adoração</div>
+            <div class="modulo-body">
+              A diversidade de instrumentos no tabernáculo e a gestão natural do
+              som como adoração. Na dedicação do templo de Salomão, 120
+              sacerdotes em uníssono encheram o templo da glória de Deus.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">M06</div>
+            <div class="modulo-title">Som como Ministério Sagrado</div>
+            <div class="modulo-body">
+              Excelência não é vaidade técnica — é adoração na prática. Servir a
+              Deus é serviço. Somos guardiões do ambiente. Enquanto poucos nos
+              veem, Deus nos vê.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- ═══════════════════════════ TRILHA TEÓRICA ═══════════════════════════ -->
+    <div class="trilha-section teo" style="background: #0d0d0d">
+      <div class="trilha-inner">
+        <div class="trilha-header">
+          <div class="trilha-icon-wrap teo-bg">◈</div>
+          <div class="trilha-header-text">
+            <div class="trilha-track-badge teo-color">Trilha 2 · T01–T14</div>
+            <div class="trilha-h2">Teórica — Fundamentos do Áudio</div>
+            <div class="trilha-desc">
+              Construir a base técnica para compreender o comportamento do som e
+              os princípios por trás de cada decisão na mixagem. Entender antes
+              de operar.
+            </div>
+          </div>
+        </div>
+
+        <!-- T01–T03 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot teo"></div>
+          Física do Áudio — Módulos T01–T03
+        </div>
+        <div class="modulos-grid teo">
+          <div class="modulo-card">
+            <div class="modulo-id">T01</div>
+            <div class="modulo-title">Física do Som</div>
+            <div class="modulo-body">
+              Ondas, frequência, amplitude, fase e comprimento de onda. Sons
+              graves se propagam mais amplamente; agudos são mais direcionais.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T02</div>
+            <div class="modulo-title">Espectro de Frequências</div>
+            <div class="modulo-body">
+              Hz, kHz, graves, médios e agudos. Como o ouvido percebe o som. A
+              audição humana é logarítmica — equilíbrio tonal muda em diferentes
+              intensidades.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T03</div>
+            <div class="modulo-title">Decibéis e Nível de Sinal</div>
+            <div class="modulo-body">
+              A escala logarítmica, headroom, dBu, dBFS e clipping. +6 dB dobra
+              o volume percebido. Headroom = margem entre sinal saudável e
+              distorção.
+            </div>
+          </div>
+        </div>
+
+        <!-- T04–T06 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot teo"></div>
+          Fluxo de Sinal — Módulos T04–T06
+        </div>
+        <div class="modulos-grid teo">
+          <div class="modulo-card">
+            <div class="modulo-id">T04</div>
+            <div class="modulo-title">Conectores e Cabos</div>
+            <div class="modulo-body">
+              XLR, P10 TS/TRS, balanceado vs. desbalanceado. Base para
+              compreender a integridade do sinal na cadeia.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T05</div>
+            <div class="modulo-title">Gain Staging</div>
+            <div class="modulo-body">
+              Otimizando o nível em cada estágio. Preamp, noise floor, ganho x
+              volume. Um dos conceitos mais críticos: baixo ruído sem distorção
+              em toda a cadeia.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T06</div>
+            <div class="modulo-title">Caminho Físico do Sinal</div>
+            <div class="modulo-body">
+              Do microfone ao PA — cada ponto da cadeia de áudio. Transdução:
+              microfones convertem energia mecânica em elétrica. Amplificação,
+              processamento, envio.
+            </div>
+          </div>
+        </div>
+
+        <!-- T07–T09 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot teo"></div>
+          Microfones e Fontes — Módulos T07–T09
+        </div>
+        <div class="modulos-grid teo">
+          <div class="modulo-card">
+            <div class="modulo-id">T07</div>
+            <div class="modulo-title">Tipos de Microfones</div>
+            <div class="modulo-body">
+              Dinâmicos, condensadores, lapelas e padrões polares. Cada tipo tem
+              características e aplicações ideais para diferentes situações.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T08</div>
+            <div class="modulo-title">Técnica de Microfone</div>
+            <div class="modulo-body">
+              Posicionamento, distância e prevenção de feedback. Uma boa captura
+              reduz a necessidade de correções posteriores — a solução começa na
+              fonte.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T09</div>
+            <div class="modulo-title">Instrumentos e DI Box</div>
+            <div class="modulo-body">
+              DI ativa/passiva, Hi-Z e Phantom Power. Completam a cadeia de
+              entrada para instrumentos que não usam microfone.
+            </div>
+          </div>
+        </div>
+
+        <!-- T10–T12 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot teo"></div>
+          Processamento — Módulos T10–T12
+        </div>
+        <div class="modulos-grid teo">
+          <div class="modulo-card">
+            <div class="modulo-id">T10</div>
+            <div class="modulo-title">Equalização</div>
+            <div class="modulo-body">
+              EQ corretivo e criativo. High-pass filter e aplicações práticas.
+              Ajusta o conteúdo espectral para corrigir problemas e destacar
+              elementos.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T11</div>
+            <div class="modulo-title">Compressão e Dinâmica</div>
+            <div class="modulo-body">
+              Threshold, ratio, attack e release. Controle de variações de
+              volume. O compressor regula inconsistências, trazendo coerência ao
+              mix.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T12</div>
+            <div class="modulo-title">Reverb e Efeitos</div>
+            <div class="modulo-body">
+              Reverb, delay e uso de FX buses para presença sem perder
+              inteligibilidade. Efeitos de tempo devem ser equilibrados para não
+              comprometer a palavra pregada.
+            </div>
+          </div>
+        </div>
+
+        <!-- T13–T14 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot teo"></div>
+          Acústica e Feedback — Módulos T13–T14
+        </div>
+        <div class="modulos-grid teo">
+          <div class="modulo-card">
+            <div class="modulo-id">T13</div>
+            <div class="modulo-title">Acústica do Ambiente</div>
+            <div class="modulo-body">
+              RT60, reflexão, absorção e posição do PA. O ambiente sabota o mix
+              antes mesmo de ligar a mesa. Reflexões afetam diretamente o
+              resultado final.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">T14</div>
+            <div class="modulo-title">Controle de Feedback</div>
+            <div class="modulo-body">
+              Ring out, GEQ e eliminação sistemática de microfonia. Identificar
+              as frequências problemáticas e eliminar com método — não no
+              escuro.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- ═══════════════════════════ TRILHA PRÁTICA ═══════════════════════════ -->
+    <div class="trilha-section pra" style="background: #0e0e0e">
+      <div class="trilha-inner">
+        <div class="trilha-header">
+          <div class="trilha-icon-wrap pra-bg">▶</div>
+          <div class="trilha-header-text">
+            <div class="trilha-track-badge pra-color">Trilha 3 · P01–P13</div>
+            <div class="trilha-h2">Prática — Aplicação na X32 ao Vivo</div>
+            <div class="trilha-desc">
+              Transforma o conhecimento teórico em ação. O foco é desenvolver
+              segurança operacional e domínio do fluxo de trabalho com a
+              Behringer X32 em situações reais de culto — ensaio, domingo,
+              evento especial.
+            </div>
+          </div>
+        </div>
+
+        <!-- P01–P04 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot pra"></div>
+          Interface e Roteamento da X32 — Módulos P01–P04
+        </div>
+        <div class="modulos-grid pra">
+          <div class="modulo-card">
+            <div class="modulo-id">P01</div>
+            <div class="modulo-title">Anatomia da X32</div>
+            <div class="modulo-body">
+              Input channels, output buses, layer switching — mapeando a
+              interface. A X32 abordada como um sistema com painéis, faders e
+              displays.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P02</div>
+            <div class="modulo-title">Roteamento de Sinal</div>
+            <div class="modulo-body">
+              AES50, input patch, output patch e stage box. Roteamento de sinal
+              via AES50 — a espinha dorsal digital da mesa.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P03</div>
+            <div class="modulo-title">Fat Channel</div>
+            <div class="modulo-body">
+              Gate, compressor e EQ paramétrico na X32. O processador por canal
+              integrado — fundação do mix antes de qualquer bus.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P04</div>
+            <div class="modulo-title">Buses, Auxes e DCAs</div>
+            <div class="modulo-body">
+              Mix buses, aux sends e controle de volume com DCAs. Gestão de
+              grupos e controle de nível sem alterar a estrutura de roteamento.
+            </div>
+          </div>
+        </div>
+
+        <!-- P05–P07 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot pra"></div>
+          Monitor e IEM — Módulos P05–P07
+        </div>
+        <div class="modulos-grid pra">
+          <div class="modulo-card">
+            <div class="modulo-id">P05</div>
+            <div class="modulo-title">Mix de Monitor</div>
+            <div class="modulo-body">
+              Foldback, sends on fader e monitor buses independentes. Criar
+              mixes independentes para o palco sem interferir no PA — uma das
+              tarefas mais críticas.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P06</div>
+            <div class="modulo-title">In-Ear Monitoring (IEM)</div>
+            <div class="modulo-body">
+              Transmissor, receptor, IEM estéreo e limitador de proteção.
+              Proteção da audição dos músicos com qualidade e conforto no palco.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P07</div>
+            <div class="modulo-title">Controle Remoto X32 Mix</div>
+            <div class="modulo-body">
+              App para dar autonomia ao músico sem sair do FOH. O músico ajusta
+              seu próprio monitor sem depender do operador principal.
+            </div>
+          </div>
+        </div>
+
+        <!-- P08–P10 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot pra"></div>
+          Workflow ao Vivo — Módulos P08–P10
+        </div>
+        <div class="modulos-grid pra">
+          <div class="modulo-card">
+            <div class="modulo-id">P08</div>
+            <div class="modulo-title">Soundcheck</div>
+            <div class="modulo-body">
+              Protocolo de passagem do início ao fim com checklist reutilizável.
+              Uma ordem lógica de checagem que garante consistência em todos os
+              cultos.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P09</div>
+            <div class="modulo-title">Operando ao Vivo</div>
+            <div class="modulo-body">
+              Leitura de meters, mute vs. fader e scenes em tempo real. Decisões
+              rápidas, conscientes e seguras durante o culto.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P10</div>
+            <div class="modulo-title">Scenes e Show Files</div>
+            <div class="modulo-body">
+              Scene recall, safe channels e backup USB para cada tipo de culto.
+              Salvar e carregar configurações garante consistência e agilidade
+              entre serviços.
+            </div>
+          </div>
+        </div>
+
+        <!-- P11–P13 -->
+        <div class="subgroup-title">
+          <div class="subgroup-dot pra"></div>
+          Especialização — Módulos P11–P13
+        </div>
+        <div class="modulos-grid pra">
+          <div class="modulo-card">
+            <div class="modulo-id">P11</div>
+            <div class="modulo-title">Gravação Multitrack</div>
+            <div class="modulo-body">
+              USB recorder, integração com DAW e virtual soundcheck. Gravar o
+              culto diretamente da X32 — e usar as gravações para soundcheck sem
+              a banda.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P12</div>
+            <div class="modulo-title">Streaming de Áudio</div>
+            <div class="modulo-body">
+              Mix for broadcast, AUX para stream e gestão de latência. Um mix
+              dedicado enviado via AUX sem comprometer o PA da sala.
+            </div>
+          </div>
+          <div class="modulo-card">
+            <div class="modulo-id">P13</div>
+            <div class="modulo-title">Manutenção e Troubleshooting</div>
+            <div class="modulo-body">
+              Debug do signal path, cabos, conexões e firmware update.
+              Identificar e resolver problemas com método — não no improviso.
+              Fecha o ciclo da formação.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <div class="footer">
+      <div class="gold-rule"></div>
+      <div class="footer-quote">
+        "Mais do que aprender a usar uma mesa, o objetivo é formar pessoas
+        capazes de sustentar a qualidade sonora de forma consistente, consciente
+        e ministerial."
+      </div>
+      <div class="footer-note">
+        Formação em Áudio para Igreja · 3 Trilhas · 33 Módulos · Espiritual ·
+        Teórica · Prática
+      </div>
+    </div>
+  </body>
+</html>
