@@ -1,0 +1,462 @@
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale: #f5e8c0;
+  --dark: #0e0e0e;
+  --dark-2: #161616;
+  --dark-3: #1f1f1f;
+  --dark-4: #2a2a2a;
+  --white: #f8f4ee;
+  --muted: #888;
+  --espiritual: #8b6fbe;
+  --espiritual-bg: #1a1526;
+  --teorica: #4a9ebf;
+  --teorica-bg: #0f1e26;
+  --pratica: #4caf7d;
+  --pratica-bg: #0f1f17;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ─── HEADER ─── */
+.hero {
+  background: var(--dark-2);
+  border-bottom: 1px solid #2a2a2a;
+  padding: 64px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(201, 168, 76, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.hero h1 span {
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-style: italic;
+}
+.hero-desc {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1.75;
+}
+.gold-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 28px auto;
+}
+
+/* ─── SECTION WRAPPER ─── */
+.section {
+  padding: 60px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.section-desc {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+/* ─── OVERVIEW CARDS ─── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  background: #222;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.overview-card {
+  padding: 36px 32px;
+  position: relative;
+  transition: background 0.2s;
+}
+.overview-card.esp {
+  background: var(--espiritual-bg);
+}
+.overview-card.teo {
+  background: var(--teorica-bg);
+}
+.overview-card.pra {
+  background: var(--pratica-bg);
+}
+.overview-card:hover {
+  filter: brightness(1.12);
+}
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+.card-track-label {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.esp .card-track-label {
+  color: var(--espiritual);
+}
+.teo .card-track-label {
+  color: var(--teorica);
+}
+.pra .card-track-label {
+  color: var(--pratica);
+}
+.card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.card-body {
+  font-size: 13.5px;
+  color: #aaa;
+  line-height: 1.65;
+}
+.card-modules-count {
+  margin-top: 20px;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  display: inline-block;
+}
+.esp .card-modules-count {
+  background: rgba(139, 111, 190, 0.15);
+  color: var(--espiritual);
+}
+.teo .card-modules-count {
+  background: rgba(74, 158, 191, 0.15);
+  color: var(--teorica);
+}
+.pra .card-modules-count {
+  background: rgba(76, 175, 125, 0.15);
+  color: var(--pratica);
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 0;
+}
+
+/* ─── TRILHA SECTION ─── */
+.trilha-section {
+  padding: 64px 40px;
+}
+.trilha-section:nth-of-type(even) {
+  background: var(--dark-2);
+}
+.trilha-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.trilha-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #2a2a2a;
+}
+.trilha-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.esp-bg {
+  background: rgba(139, 111, 190, 0.15);
+}
+.teo-bg {
+  background: rgba(74, 158, 191, 0.15);
+}
+.pra-bg {
+  background: rgba(76, 175, 125, 0.15);
+}
+.trilha-header-text {
+  flex: 1;
+}
+.trilha-track-badge {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.esp .trilha-track-badge,
+.esp-color {
+  color: var(--espiritual);
+}
+.teo .trilha-track-badge,
+.teo-color {
+  color: var(--teorica);
+}
+.pra .trilha-track-badge,
+.pra-color {
+  color: var(--pratica);
+}
+.trilha-h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.trilha-desc {
+  color: #999;
+  font-size: 14px;
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* ─── MÓDULOS GRID ─── */
+.modulos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.modulo-card {
+  background: var(--dark-3);
+  border-radius: 12px;
+  padding: 22px 22px 22px 22px;
+  border: 1px solid #2a2a2a;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.modulo-card:hover {
+  transform: translateY(-2px);
+}
+.esp .modulo-card:hover {
+  border-color: rgba(139, 111, 190, 0.5);
+}
+.teo .modulo-card:hover {
+  border-color: rgba(74, 158, 191, 0.5);
+}
+.pra .modulo-card:hover {
+  border-color: rgba(76, 175, 125, 0.5);
+}
+.modulo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  border-radius: 3px 0 0 3px;
+}
+.esp .modulo-card::before {
+  background: var(--espiritual);
+}
+.teo .modulo-card::before {
+  background: var(--teorica);
+}
+.pra .modulo-card::before {
+  background: var(--pratica);
+}
+.modulo-id {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.esp .modulo-id {
+  color: var(--espiritual);
+}
+.teo .modulo-id {
+  color: var(--teorica);
+}
+.pra .modulo-id {
+  color: var(--pratica);
+}
+.modulo-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.modulo-body {
+  font-size: 12.5px;
+  color: #888;
+  line-height: 1.55;
+}
+
+/* ─── QUOTE BLOCK ─── */
+.quote-block {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.06) 0%,
+    rgba(201, 168, 76, 0.02) 100%
+  );
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin: 40px 0;
+  position: relative;
+}
+.quote-block::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 72px;
+  color: var(--gold);
+  opacity: 0.25;
+  line-height: 1;
+}
+.quote-text {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.quote-ref {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* ─── HIGHLIGHT BOX ─── */
+.highlight-box {
+  background: var(--dark-3);
+  border-radius: 12px;
+  border: 1px solid #333;
+  padding: 20px 24px;
+  margin: 28px 0;
+  font-size: 14px;
+  color: #ccc;
+  font-style: italic;
+  line-height: 1.7;
+  position: relative;
+}
+
+/* ─── SUBGROUPS ─── */
+.subgroup-title {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 36px 0 16px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.subgroup-title span {
+  color: #555;
+}
+.subgroup-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.esp .subgroup-dot {
+  background: var(--espiritual);
+}
+.teo .subgroup-dot {
+  background: var(--teorica);
+}
+.pra .subgroup-dot {
+  background: var(--pratica);
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--dark-2);
+  border-top: 1px solid #222;
+  padding: 48px 40px;
+  text-align: center;
+}
+.footer-quote {
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.footer-note {
+  font-size: 12px;
+  color: #555;
+  font-family: "DM Mono", monospace;
+  letter-spacing: 0.08em;
+}
